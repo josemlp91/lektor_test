@@ -60,19 +60,19 @@
     
     el 2016-10-15
   </p>
-  <p>En este primer post de flamante blog, vamos a comenzar hablando sobre <a href="https://www.getlektor.com/">Lektor</a> una herramienta pensada para crear sitios estáticos de una forma simple y cómoda.</p>
-<p>Lektor se define a si mismo como un CMS estático facil de usar, flexible y completo. Su filosofía queda resumida en la frase.</p>
+  <p>En este primer post del flamante blog, vamos a comenzar hablando sobre <a href="https://www.getlektor.com/">Lektor</a> una herramienta pensada para crear sitios estáticos de una forma simple y cómoda.</p>
+<p>Lektor se define a sí mismo como un CMS estático fácil de usar, flexible y completo. Su filosofía queda resumida en la frase.</p>
 <blockquote><p>Getting your ideas implemented is as easy as frying an egg.</p>
 </blockquote>
 <p>Como no podía ser de otra forma esta plataforma esta implementada en <strong>Python</strong>.</p>
 <h2>Instalación</h2>
-<p>Existen varias formas pero la que más me gusta es usando  el conocido gestor de paquetes <a href="https://pip.pypa.io/en/stable/">pip</a>.</p>
+<p>Existen varias formas pero la que más me gusta consiste en  usar  el conocido gestor de paquetes <a href="https://pip.pypa.io/en/stable/">pip</a>.</p>
 <p>Para ello lo primero que tenemos que hacer es crear un entorno virtual, activarlo y instalar las dependencias de lektor desde el repositorio de pip.</p>
 <pre><code>$ virtualenv venv
 $ . venv/bin/activate
 $ pip install Lektor
 </code></pre>
-<p>Ya esta instalado.</p>
+<p>Ya esta instalado todo lo necesario.</p>
 <h2>Iniciar tu primer blog</h2>
 <p>Para crear tu primer blog, ubícate en un directorio de trabajo y ejecuta en tu consola:</p>
 <pre><code>lektor quickstart
@@ -105,10 +105,10 @@ size = large
 type = text
 </code></pre>
 <h2>Templates</h2>
-<p>Son archivos html que definen como se estrutura y se visualiza los contenidos, incorpora el motor de plantillas <a href="http://jinja.pocoo.org/docs/dev/">Jinja2</a> que es uno de los motores más eficientes.</p>
+<p>Son archivos html que definen como se estructura y se visualiza los contenidos, incorpora el motor de plantillas <a href="http://jinja.pocoo.org/docs/dev/">Jinja2</a> que es uno de los motores más eficientes.</p>
 <p>Para acceder a los recursos debes usar la <a href="https://www.getlektor.com/docs/api/">api</a> de Lektor.</p>
 <h2>Plugins</h2>
-<p>Existe módulos que permiten añadir algunas funcionalidades extra, como integrar sistema de comentários, redes sociales, google analytics, colorear código fuente, entre otros muchos.</p>
+<p>Existe módulos que permiten añadir algunas funcionalidades extra, como integrar sistema de comentarios, redes sociales, google analytics, colorear código fuente, entre otros muchos.</p>
 <p>Te recomiendo que te pases por la sección de <a href="https://www.getlektor.com/docs/plugins/">plugins</a> de la documentación oficial.</p>
 <h2>Despliegue</h2>
 <p>Una vez tienes tu blog, lo interesante es subirlo a un sitio público, para ello lo primero que debes hacer es compilarlo. Usando el comando</p>
@@ -118,11 +118,11 @@ type = text
 <p>Una vez compilado, podemos subir el blog manualmente a un servidor, mediante ftp o similar.
 Sin embargo una forma mucho más cómoda, consiste en definir   el método de despliegue en el fichero 
 <code>lektorproject</code></p>
-<p>Por ejemplo para despegarlo por ftp definimos la siguiente estructura.</p>
+<p>Por ejemplo para despegarlo por <code>ftp</code> definimos la siguiente estructura.</p>
 <pre><code>[servers.production]
 target = ftps://myuser:mypassword@ftp.example.com/var/www/example
 </code></pre>
-<p>o para desplegarlo en github pages definimos lo siguiente.</p>
+<p>o para desplegarlo en <code>github pages</code> definimos lo siguiente.</p>
 <pre><code>[servers.ghpages]
 target = ghpages://your-user/your-repository
 </code></pre>
@@ -130,6 +130,9 @@ target = ghpages://your-user/your-repository
 <pre><code>lektor build &amp;&amp; lektor deploy
 </code></pre>
 <p>O pulsar sobre el botón publicar que aparece en la interfaz de administración.</p>
+<p><br><br></p>
+<blockquote><p>Ahora que conoces como funciona <strong>Lektor</strong> no tienes escusa para no crear tu entrada en el blog de <strong>Python Granada</strong>.</p>
+</blockquote>
 
   </div>
 
