@@ -3,6 +3,13 @@ h1, h2, h3, p, span, a {
     font-family: 'Ubuntu', sans-serif;
 }
 
+.container_large {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+}
+
 .container {
     margin-right: auto;
     margin-left: auto;
