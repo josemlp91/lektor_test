@@ -1,5 +1,0 @@
-# Heydjbox
----
-
-API Spotify
-

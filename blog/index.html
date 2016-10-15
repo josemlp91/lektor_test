@@ -1,27 +1,18 @@
 <!doctype html>
 <meta charset="utf-8">
-<link rel="stylesheet" href="../static/style.css">
 <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-2.1.0.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<!-- Para cambiar el tema de bootstraps usando: https://bootswatch.com/api/3.json-->
-<script>
-$( document ).ready(function() {
-  $.getJSON("https://bootswatch.com/api/3.json", function (data) {
-      var themes = data.themes;
-      // Para cambiar de tema modificar el indice.
-      var theme = themes[8];
-      $("link").attr("href", theme.css);
-     
-  }, "json").fail(function(){
-      $(".alert").toggleClass("alert-info alert-danger");
-      $(".alert h4").text("Failure!");
-  });
-});
-</script>
+<!-- Tema y colores -->
+<link rel="stylesheet" href="https://bootswatch.com/readable/bootstrap.min.css">
+<!-- Custom -->
+<link rel="stylesheet" href="../static/style.css">
 
-<title> — Example</title>
+<!-- Font -->
+<link href="https://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet">
+
+<title> </title>
 <body>
   <header>  
   <div class="container">
@@ -50,9 +41,7 @@ $( document ).ready(function() {
           <li class="active">
           <a href="../blog/">Blog</a></li>
         
-        
-      </ul>
-      
+      </ul>     
     </div>
   </div>
 </nav>
@@ -64,7 +53,7 @@ $( document ).ready(function() {
     
   <div class="blog-post">
   
-    <h2><a href="../blog/first-post/">Como instalar y gestionar Lektor en dos patadas</a></h2>
+    <h2><a href="../blog/first-post/">Usar Lektor, más fácil que freír un huevo.</a></h2>
   
   <p class="meta">
     Escrito por
@@ -73,26 +62,76 @@ $( document ).ready(function() {
     
     el 2016-10-15
   </p>
-  <p>This is an example blog post.  Not much here but that's not the point :)</p>
-<div class="highlight"><pre><span></span><span class="k">print</span> <span class="s2">&quot;Hello World!&quot;</span>
-</pre></div>
+  <p>En este primer post de flamante blog, vamos a comenzar hablando sobre <a href="https://www.getlektor.com/">Lektor</a> una herramienta pensada para crear sitios estáticos de una forma simple y cómoda.</p>
+<p>Lektor se define a si mismo como un CMS estático facil de usar, flexible y completo. Su filosofía queda resumida en la frase.</p>
+<blockquote><p>Getting your ideas implemented is as easy as frying an egg.</p>
+</blockquote>
+<p>Como no podía ser de otra forma esta plataforma esta implementada en <strong>Python</strong>.</p>
+<h2>Instalación</h2>
+<p>Existen varias formas pero la que más me gusta es usando  el conocido gestor de paquetes <a href="https://pip.pypa.io/en/stable/">pip</a>.</p>
+<p>Para ello lo primero que tenemos que hacer es crear un entorno virtual, activarlo y instalar las dependencias de lektor desde el repositorio de pip.</p>
+<pre><code>$ virtualenv venv
+$ . venv/bin/activate
+$ pip install Lektor
+</code></pre>
+<p>Ya esta instalado.</p>
+<h2>Iniciar tu primer blog</h2>
+<p>Para crear tu primer blog, ubícate en un directorio de trabajo y ejecuta en tu consola:</p>
+<pre><code>lektor quickstart
+</code></pre>
+<p>El asistente te hace varias preguntas, como el título del blog, el autor y crea un directorio con el mismo nombre que tu blog. Muévete al nuevo directorio y ejecuta:</p>
+<pre><code>lektor server
+</code></pre>
+<p>Con el comando anterior se ejecuta un servidor web y puedes ver tu blog accediendo desde el navegador a la url  <strong><em>localhost:5000</em></strong>, ademas puedes acceder a la  zona de administración accediendo a la url <strong><em>/admin</em></strong>.</p>
+<h2>Markdown</h2>
+<p>Para editar los contenidos se usa el lenguaje de marcado <a href="http://markdown.es/">Markdown</a> creado en 2004 por John Gruber, cuenta con una <a href="http://markdown.es/sintaxis-markdown">sintaxis</a> bastante simple.</p>
+<h2>Zona de administración</h2>
+<p>Desde la zona de administración podemos gestionar de forma cómoda los diferentes contenidos, crear nuevos o editar. Además permite subir ficheros <strong><em>"adjuntos"</em></strong>, como imágenes o ficheros, para poder enlazarlos directamente desde las entradas.</p>
+<p><br>
+<img src="captura_1" width="750px">
+<br></p>
+<h2>Modelos</h2>
+<p>Uno de las características mas interesantes de este framework es la posibilidad de definir los atributos de nuestras entradas. Por ejemplo podemos establecer que una entrada en el blog tenga obligatoriamente, un título, un autor, fecha de creación, url a la imagen principal y un cuerpo. Así requiere al usuario todos los campos y posteriormente  la plantilla html conoce los campos del modelo y puede estructurar el contenido de forma adecuada.</p>
+<p>Los modelos se definen en el directorio <code>models</code> y sigue un esquema como el siguiente.</p>
+<pre><code>[model]
+name = Blog Post
+label = {{ this.title }}
+hidden = yes
 
-  </div>
+[fields.title]
+label = Title
+type = string
+size = large
 
-  
-    
-  <div class="blog-post">
-  
-    <h2><a href="../blog/nueva-entrada/">Nueva entrada</a></h2>
-  
-  <p class="meta">
-    Escrito por
-    
-      jose miguel
-    
-    el 2016-10-15
-  </p>
-  <p>Holaaaaaaaaaaaaaaaaaaaaa</p>
+[fields.main_image]
+type = text
+</code></pre>
+<h2>Templates</h2>
+<p>Son archivos html que definen como se estrutura y se visualiza los contenidos, incorpora el motor de plantillas <a href="http://jinja.pocoo.org/docs/dev/">Jinja2</a> que es uno de los motores más eficientes.</p>
+<p>Para acceder a los recursos debes usar la <a href="https://www.getlektor.com/docs/api/">api</a> de Lektor.</p>
+<h2>Plugins</h2>
+<p>Existe módulos que permiten añadir algunas funcionalidades extra, como integrar sistema de comentários, redes sociales, google analytics, colorear código fuente, entre otros muchos.</p>
+<p>Te recomiendo que te pases por la sección de <a href="https://www.getlektor.com/docs/plugins/">plugins</a> de la documentación oficial.</p>
+<h2>Despliegue</h2>
+<p>Una vez tienes tu blog, lo interesante es subirlo a un sitio público, para ello lo primero que debes hacer es compilarlo. Usando el comando</p>
+<pre><code>lektor project-info --output-path
+</code></pre>
+<p>Esto se encarga de convertir tu sitio lektor en un sitio exclusivamente html, css y js.</p>
+<p>Una vez compilado, podemos subir el blog manualmente a un servidor, mediante ftp o similar.
+Sin embargo una forma mucho más cómoda, consiste en definir   el método de despliegue en el fichero 
+<code>lektorproject</code></p>
+<p>Por ejemplo para despegarlo por ftp definimos la siguiente estructura.</p>
+<pre><code>[servers.production]
+target = ftps://myuser:mypassword@ftp.example.com/var/www/example
+</code></pre>
+<p>o para desplegarlo en github pages definimos lo siguiente.</p>
+<pre><code>[servers.ghpages]
+target = ghpages://your-user/your-repository
+</code></pre>
+<p>Una vez configurado podemos ejecutar el comando:</p>
+<pre><code>lektor build &amp;&amp; lektor deploy
+</code></pre>
+<p>O pulsar sobre el botón publicar que aparece en la interfaz de administración.</p>
 
   </div>
 
@@ -112,6 +151,8 @@ $( document ).ready(function() {
 
   </div>
 
+  
+
   <footer>
   <div class="container">
     <span class="license"><a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</span>
@@ -119,4 +160,5 @@ $( document ).ready(function() {
      <span>&copy; Copyright 2016</span>
   </div>
   </footer>
+  
 </body>
