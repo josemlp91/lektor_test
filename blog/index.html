@@ -1,25 +1,70 @@
 <!doctype html>
 <meta charset="utf-8">
 <link rel="stylesheet" href="../static/style.css">
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+<!-- Para cambiar el tema de bootstraps usando: https://bootswatch.com/api/3.json-->
+<script>
+$( document ).ready(function() {
+  $.getJSON("https://bootswatch.com/api/3.json", function (data) {
+      var themes = data.themes;
+      // Para cambiar de tema modificar el indice.
+      var theme = themes[8];
+      $("link").attr("href", theme.css);
+     
+  }, "json").fail(function(){
+      $(".alert").toggleClass("alert-info alert-danger");
+      $(".alert h4").text("Failure!");
+  });
+});
+</script>
+
 <title> — Example</title>
 <body>
-  <header>
-    <h1>Example</h1>
-    <nav>
+  <header>  
+  <div class="container">
+        <div class="starter-template">
+          <h1>Example</h1>
+        </div>
+  </div>
+
+  <nav class="navbar navbar-default">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Python Granada</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><a href="../">Welcome</a></li>
+      <li>
+        <a href="../">Welcome</a></li>
+          
+          <li class="active">
+          <a href="../blog/">Blog</a></li>
         
-          <li class="active"><a href="../blog/">Blog</a></li>
+          <li>
+          <a href="../projects">Projects</a></li>
         
-          <li><a href="../projects/">Projects</a></li>
+          <li>
+          <a href="../about">About</a></li>
         
-          <li><a href="../about/">About</a></li>
         
       </ul>
-    </nav>
+      
+    </div>
+  </div>
+</nav>
+
   </header>
-  <div class="page">
-    
+  <div class="page container">
+      
   
     
   <div class="blog-post">
@@ -38,6 +83,23 @@
   </div>
 
   
+    
+  <div class="blog-post">
+  
+    <h2><a href="../blog/nueva-entrada/">Nueva entrada</a></h2>
+  
+  <p class="meta">
+    written by
+    
+      jose miguel
+    
+    on 2016-10-15
+  </p>
+  <p>Holaaaaaaaaaaaaaaaaaaaaa</p>
+
+  </div>
+
+  
 
   
   <div class="pagination">
@@ -52,7 +114,13 @@
 
 
   </div>
+  
+
   <footer>
-    &copy; Copyright 2016 by jose miguel,,,.
+  <div class="container">
+    &copy; Copyright 2016
+  </div>
   </footer>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
